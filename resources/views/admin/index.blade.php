@@ -500,7 +500,7 @@
                     </div>  
                 </div>
             </div>
-        </section>W
+        </section>
     </div>
 </div>
 

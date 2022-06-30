@@ -10,8 +10,8 @@
 				 <a href="index.html">
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">					 	
-						  <img src="../images/logo-dark.png" alt="">
-						  <h3><b>Sunny</b> Admin</h3>
+						  <img src="{{asset('backend/images/logo-dark.png')}}" alt="">
+						  <h3><b>School Management</b> Admin</h3>
 					 </div>
 				</a>
 			</div>
