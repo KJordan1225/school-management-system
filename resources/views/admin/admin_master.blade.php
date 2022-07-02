@@ -74,6 +74,10 @@
 	<script src="{{ asset('backend/js/template.js') }}"></script>
 	<script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
 
+  <!-- Sweet Alert to confirm delete -->
+  @yield('deleteAlert')
+
+  <!-- Notification of successful actions -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script>
     @if(Session::has('message'))
