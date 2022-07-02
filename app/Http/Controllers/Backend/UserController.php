@@ -49,7 +49,7 @@ class UserController extends Controller
     public function UserUpdate(Request $request, $id){
 
         $validatedData = $request->validate([
-            'email' => 'required|unique:users,email,$id',
+            'email' => 'required|unique:users,email,'.$id,
             'name' => 'required',
         ]);
 
