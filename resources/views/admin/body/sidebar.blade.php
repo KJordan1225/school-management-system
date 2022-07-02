@@ -21,9 +21,9 @@
       <ul class="sidebar-menu" data-widget="tree">  
 		  
 		<li>
-          <a href="index.html">
+          <a href="{{ route('dashboard') }}">
             <i data-feather="pie-chart"></i>
-			<span>Dashboard</span>
+			<span>Dashboard</span>      
           </a>
         </li>  
 		
