@@ -20,7 +20,8 @@
                             <div class="widget-user-header bg-black">
                                 <h3 class="widget-user-username">{{ $user->name }}</h3>
 
-                                <a href="{{ route('users.add') }} " class="btn btn-rounded btn-success mb-5" style="float: right" >Edit Profile</a>
+                                <a href="{{ route('profile.edit') }} " class="btn btn-rounded btn-success mb-5" 
+                                    style="float: right" >Edit Profile</a>
                                 
                                 <h6 class="widget-user-desc">{{ $user->usertype }}</h6>
                                 <h6 class="widget-user-desc">{{ $user->email }}</h6>                            
