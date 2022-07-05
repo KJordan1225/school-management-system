@@ -63,12 +63,14 @@ Route::prefix('profiles')->group(function(){
 
 Route::prefix('setups')->group(function(){
 
-    Route::get('/view', [StudentClassController::class, 'ViewStudent'])->name('student.class.view');
-    // Route::get('/add', [UserController::class, 'UserAdd'])->name('users.add');
-    // Route::post('/store', [UserController::class, 'UserStore'])->name('users.store');
-    // Route::get('/edit', [ProfileController::class, 'ProfileEdit'])->name('profile.edit');
+    // Student Class Routes
+    Route::get('student/class/view', [StudentClassController::class, 'ViewStudent'])->name('student.class.view');
+    Route::get('student/class/add', [StudentClassController::class, 'StudentClassAdd'])->name('student.class.add');
+    Route::post('student/class/store', [StudentClassController::class, 'StudentClassStore'])->name('store.student.class');
+    Route::get('student/class/edit/{id}', [StudentClassController::class, 'StudentClassEdit'])->name('student.class.edit');
+    Route::post('student/class/update/{id}', [StudentClassController::class, 'StudentClassUpdate'])->name('student.class.update');
     // Route::post('/store', [ProfileController::class, 'ProfileStore'])->name('profile.store');
-    // Route::get('/delete/{id}', [UserController::class, 'UserDelete'])->name('users.delete');
+    Route::get('student/class/delete/{id}', [StudentClassController::class, 'StudentClassDelete'])->name('student.class.delete');
     // Route::get('/password/view', [ProfileController::class, 'PasswordView'])->name('password.view');
     // Route::post('/password/update', [ProfileController::class, 'PasswordUpdate'])->name('password.update');
 

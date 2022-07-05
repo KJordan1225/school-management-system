@@ -15,7 +15,7 @@
 			 <div class="box">
 				<div class="box-header with-border">
 				  <h3 class="box-title">Student Class List</h3>
-                  <a href="{{ route('users.add') }} " class="btn btn-rounded btn-success mb-5" 
+                  <a href="{{ route('student.class.add') }} " class="btn btn-rounded btn-success mb-5" 
                     style="float: right" >Add Student Class</a>
 				</div>
 				<!-- /.box-header -->
@@ -33,10 +33,11 @@
                             @foreach($allData as $key => $class)
 							<tr>
 								<td>{{ $key+1 }}</td>
-								<td>{{ $class->name }}</td>								<td>
-                                <a href="{{ route('user.edit', $class->id) }}" 
-                                    class="btn btn-info">Edit</a>
-                                <a href="{{ route('user.delete', $class->id) }}" 
+								<td>{{ $class->name }}</td>	
+                                <td>
+                                    <a href="{{ route('student.class.edit', $class->id) }}" 
+                                    class="btn btn-info">Edit</a>  
+                                    <a href="{{ route('student.class.delete', $class->id) }}" 
                                     class="btn btn-danger" id="delete" >Delete</a>
                                 </td>
 							</tr>
@@ -83,7 +84,7 @@
             window.location.href = link
             Swal.fire(
               'Deleted!',
-              'The user has been deleted.',
+              'The student class has been deleted.',
               'success'
             )
           }
