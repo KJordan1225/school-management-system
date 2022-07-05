@@ -28,7 +28,7 @@ class StudentYearController extends Controller
         $data->save();
 
         $notification = array(
-            'message' => 'Student class inserted successfully',
+            'message' => 'Student year inserted successfully',
             'alert-type' => 'success'
         );
 
@@ -47,7 +47,7 @@ class StudentYearController extends Controller
     public function StudentYearUpdate(Request $request, $id){
 
         $validatedData = $request->validate([
-            'name' => 'required|unique:student_yeares,name,'.$id,
+            'name' => 'required|unique:student_years,name,'.$id,
         ]);
 
         $data = StudentYear::find($id);
@@ -55,11 +55,11 @@ class StudentYearController extends Controller
         $data->save();
 
         $notification = array(
-            'message' => 'Student class updated successfully',
+            'message' => 'Student year updated successfully',
             'alert-type' => 'success'
         );
         
-        return redirect()->route('student.class.view')->with($notification);
+        return redirect()->route('student.year.view')->with($notification);
     }
 
     public function StudentYearDelete($id){
@@ -69,10 +69,10 @@ class StudentYearController extends Controller
         $data->delete();
 
         $notification = array(
-            'message' => 'Student class deleted successfully',
+            'message' => 'Student year deleted successfully',
             'alert-type' => 'success'
         );
         
-        return redirect()->route('student.class.view')->with($notification);
+        return redirect()->route('student.year.view')->with($notification);
     }
 }
