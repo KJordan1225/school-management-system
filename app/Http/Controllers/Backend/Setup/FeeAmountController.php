@@ -11,7 +11,8 @@ use App\Models\StudentClass;
 class FeeAmountController extends Controller
 {
     public function ViewFeeAmount(){
-        $data['allData'] = FeeCategoryAmount::all();
+        // $data['allData'] = FeeCategoryAmount::all();
+        $data['allData'] = FeeCategoryAmount::select('fee_category_id')->groupBy('fee_category_id')->get();
         return view('backend.setup.fee_amount.view_fee_amount', $data);
     }
 
@@ -23,29 +24,36 @@ class FeeAmountController extends Controller
 
     public function FeeAmountStore(Request $request){
 
-        $validatedData = $request->validate([
-            'name' => 'required|unique:fee_categories,name',
-        ]);
+        $countClass = count($request->class_id);
+        if ($countClass != NULL){
+            for ($i=0; $i<$countClass; $i++){
+                $fee_amount = new FeeCategoryAmount();
+                $fee_amount->fee_category_id = $request->fee_category_id;
+                $fee_amount->class_id = $request->class_id[$i];
+                $fee_amount->amount = $request->amount[$i];
+                $fee_amount->save();
 
-        $data = new FeeAmount();
-        $data->name = $request->name;
-        $data->save();
+            }// End for loop
+        } // End if condition
 
         $notification = array(
-            'message' => 'Student fee category inserted successfully',
+            'message' => 'Student fee amount inserted successfully',
             'alert-type' => 'success'
         );
-
-        return redirect()->route('fee.category.view')->with($notification);
+        
+        return redirect()->route('fee.amount.view')->with($notification);        
 
     }
 
-    public function FeeAmountEdit($id){
-        $editData = FeeAmount::find($id);
-        return view('backend.setup.fee_category.edit_fee_cat', compact('editData'));
+    public function FeeAmountEdit($fee_category_id){
+        // $editData = FeeCategoryAmount::find($fee_category_id);
+        // return view('backend.setup.fee_category.edit_fee_cat', compact('editData'));
 
-        // $data['editData'] = FeeAmount::find($id);
-        // return view('backend.setup.fee_category.edit_fee_cat', $data);
+        $data['fee_categories'] = FeeCategory::all();
+        $data['classes'] = StudentClass::all();
+        $data['editData'] = FeeCategoryAmount::where('fee_category_id',$fee_category_id)->orderBy('class_id','asc')->get();
+        // dd($data['editData']->toArray());
+        return view('backend.setup.fee_amount.edit_fee_amount', $data);
     }
 
     public function FeeAmountUpdate(Request $request, $id){
