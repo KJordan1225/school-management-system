@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\Setup\StudentClassController;
 use App\Http\Controllers\Backend\Setup\StudentYearController;
 use App\Http\Controllers\Backend\Setup\StudentGroupController;
 use App\Http\Controllers\Backend\Setup\StudentShiftController;
+use App\Http\Controllers\Backend\Setup\FeeCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,6 +108,17 @@ Route::prefix('setups')->group(function(){
      Route::post('student/shift/update/{id}', [StudentShiftController::class, 'StudentShiftUpdate'])->name('student.shift.update');
      // Route::post('/store', [ProfileController::class, 'ProfileStore'])->name('profile.store');
      Route::get('student/shift/delete/{id}', [StudentShiftController::class, 'StudentShiftDelete'])->name('student.shift.delete');
+     // Route::get('/password/view', [ProfileController::class, 'PasswordView'])->name('password.view');
+     // Route::post('/password/update', [ProfileController::class, 'PasswordUpdate'])->name('password.update');
+
+     // Fee Category Routes
+     Route::get('fee/category/view', [FeeCategoryController::class, 'ViewFeeCategory'])->name('fee.category.view');
+     Route::get('fee/category/add', [FeeCategoryController::class, 'FeeCategoryAdd'])->name('fee.category.add');
+     Route::post('fee/category/store', [FeeCategoryController::class, 'FeeCategoryStore'])->name('store.fee.category');
+     Route::get('fee/category/edit/{id}', [FeeCategoryController::class, 'FeeCategoryEdit'])->name('fee.category.edit');
+     Route::post('fee/category/update/{id}', [FeeCategoryController::class, 'FeeCategoryUpdate'])->name('fee.category.update');
+     // Route::post('/store', [ProfileController::class, 'ProfileStore'])->name('profile.store');
+     Route::get('fee/category/delete/{id}', [FeeCategoryController::class, 'FeeCategoryDelete'])->name('fee.category.delete');
      // Route::get('/password/view', [ProfileController::class, 'PasswordView'])->name('password.view');
      // Route::post('/password/update', [ProfileController::class, 'PasswordUpdate'])->name('password.update');
 
