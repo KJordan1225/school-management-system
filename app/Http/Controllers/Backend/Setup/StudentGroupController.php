@@ -59,7 +59,7 @@ class StudentGroupController extends Controller
             'alert-type' => 'success'
         );
         
-        return redirect()->route('student.year.view')->with($notification);
+        return redirect()->route('student.group.view')->with($notification);
     }
 
     public function StudentGroupDelete($id){
@@ -69,10 +69,10 @@ class StudentGroupController extends Controller
         $data->delete();
 
         $notification = array(
-            'message' => 'Student year deleted successfully',
+            'message' => 'Student group deleted successfully',
             'alert-type' => 'success'
         );
         
-        return redirect()->route('student.year.view')->with($notification);
+        return redirect()->route('student.group.view')->with($notification);
     }
 }
