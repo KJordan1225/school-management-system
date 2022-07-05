@@ -8,19 +8,20 @@
     <section class="sidebar">	
 		
         <div class="user-profile">
-			<div class="ulogo">
-				 <a href="index.html">
-				  <!-- logo for regular state and mobile devices -->
-					 <div class="d-flex align-items-center justify-content-center">					 	
-						  <img src="{{asset('backend/images/logo-dark.png')}}" alt="">
-						  <h3><b>School Management</b> Admin</h3>
-					 </div>
-				</a>
-			</div>
+          <div class="ulogo">
+            <a href="index.html">
+              <!-- logo for regular state and mobile devices -->
+              <div class="d-flex align-items-center justify-content-center">					 	
+                  <img src="{{asset('backend/images/logo-dark.png')}}" alt="">
+                  <h3><b>School Management</b> Admin</h3>
+              </div>
+            </a>
+          </div>
         </div>
       
       <!-- sidebar menu-->
-      <ul class="sidebar-menu" data-widget="tree">  
+      <!-- <ul class="sidebar-menu" data-widget="tree"> -->
+      <ul class="" data-widget="tree">  
 		  
 		    <li class="{{ ($route == 'dashboard')?'active':'' }}">
           <a href="{{ route('dashboard') }}">
@@ -69,6 +70,7 @@
             <li><a href="{{ route('student.group.view') }}"><i class="ti-more"></i>Student Group</a></li>
             <li><a href="{{ route('student.shift.view') }}"><i class="ti-more"></i>Student Shift</a></li>
             <li><a href="{{ route('fee.category.view') }}"><i class="ti-more"></i>Fee Category</a></li>
+            <li><a href="{{ route('fee.amount.view') }}"><i class="ti-more"></i>Fee Category Amount</a></li>
           </ul>
         </li>
 		
