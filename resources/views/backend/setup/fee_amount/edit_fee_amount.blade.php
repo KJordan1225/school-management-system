@@ -29,7 +29,13 @@
                     </div>
                 @endif
 
-					<form method="post" action="{{ route('store.fee.amount') }}">
+                @if(session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
+
+					<form method="post" action="{{ route('fee.amount.update',$editData[0]->fee_category_id) }}">
                         @csrf
 					  <div class="row">
 						<div class="col-12">
@@ -121,7 +127,7 @@
 
 
 						<div class="text-xs-right">
-							<input type="submit" class="btn btn-rounded btn-info" value="Submit" />
+							<input type="submit" class="btn btn-rounded btn-info" value="Update" />
 						</div>
 					</form>
 

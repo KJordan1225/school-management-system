@@ -56,22 +56,29 @@ class FeeAmountController extends Controller
         return view('backend.setup.fee_amount.edit_fee_amount', $data);
     }
 
-    public function FeeAmountUpdate(Request $request, $id){
+    public function FeeAmountUpdate(Request $request, $fee_category_id){
+        if($request->class_id == NULL){
+            return back()->with('error', 'At least one Class and Amount is required for update');
+        } else {
+            $countClass = count($request->class_id);
+            FeeCategoryAmount::where('fee_category_id',$fee_category_id)->delete();    
+            for ($i=0; $i<$countClass; $i++){
+                $fee_amount = new FeeCategoryAmount();
+                $fee_amount->fee_category_id = $request->fee_category_id;
+                $fee_amount->class_id = $request->class_id[$i];
+                $fee_amount->amount = $request->amount[$i];
+                $fee_amount->save();
 
-        $validatedData = $request->validate([
-            'name' => 'required|unique:fee_categories,name,'.$id,
-        ]);
+            }// End for loop               
 
-        $data = FeeAmount::find($id);
-        $data->name = $request->name;
-        $data->save();
+        }        
 
         $notification = array(
-            'message' => 'Student fee category updated successfully',
+            'message' => 'Student fee amount updated successfully',
             'alert-type' => 'success'
         );
         
-        return redirect()->route('fee.category.view')->with($notification);
+        return redirect()->route('fee.amount.view')->with($notification);
     }
 
     public function FeeAmountDelete($id){
