@@ -66,7 +66,11 @@ Route::prefix('profiles')->group(function(){
 
 });
 
-Route::prefix('setups')->group(function(){
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->prefix('setups')->group(function(){
 
     // Student Class Routes
     Route::get('student/class/view', [StudentClassController::class, 'ViewStudent'])->name('student.class.view');
@@ -128,8 +132,8 @@ Route::prefix('setups')->group(function(){
      Route::get('fee/amount/add', [FeeAmountController::class, 'FeeAmountAdd'])->name('fee.amount.add');
      Route::post('fee/amount/store', [FeeAmountController::class, 'FeeAmountStore'])->name('store.fee.amount');
      Route::get('fee/amount/edit/{fee_category_id}', [FeeAmountController::class, 'FeeAmountEdit'])->name('fee.amount.edit');
-     Route::post('fee/amount/update/{id}', [FeeAmountController::class, 'FeeAmountUpdate'])->name('fee.amount.update');
-    //  Route::get('fee/category/delete/{id}', [FeeCategoryController::class, 'FeeCategoryDelete'])->name('fee.category.delete');
+     Route::post('fee/amount/update/{fee_category_id}', [FeeAmountController::class, 'FeeAmountUpdate'])->name('fee.amount.update');
+     Route::get('fee/amount/details/{fee_category_id}', [FeeAmountController::class, 'FeeAmountDetails'])->name('fee.amount.details');
 
 
 

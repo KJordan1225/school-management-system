@@ -51,7 +51,8 @@ class FeeAmountController extends Controller
 
         $data['fee_categories'] = FeeCategory::all();
         $data['classes'] = StudentClass::all();
-        $data['editData'] = FeeCategoryAmount::where('fee_category_id',$fee_category_id)->orderBy('class_id','asc')->get();
+        $data['editData'] = FeeCategoryAmount::where('fee_category_id',$fee_category_id)
+            ->orderBy('class_id','asc')->get();
         // dd($data['editData']->toArray());
         return view('backend.setup.fee_amount.edit_fee_amount', $data);
     }
@@ -83,7 +84,6 @@ class FeeAmountController extends Controller
 
     public function FeeAmountDelete($id){
 
-
         $data = FeeAmount::find($id);
         $data->delete();
 
@@ -93,5 +93,13 @@ class FeeAmountController extends Controller
         );
         
         return redirect()->route('fee.category.view')->with($notification);
+    }
+
+    public function FeeAmountDetails($fee_category_id){
+        $data['detailsData'] = FeeCategoryAmount::where('fee_category_id',$fee_category_id)
+            ->orderBy('class_id','asc')->get();
+
+            return view('backend.setup.fee_amount.details_fee_amount', $data);   
+        
     }
 }
